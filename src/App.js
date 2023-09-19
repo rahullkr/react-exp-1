@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// import Video from "./component/video"
+import Border from "./Component/Border/border";
+import ChildBorder2 from "./Component/Child2";
+import ChildBorder3 from "./Component/Child3";
+import ChildBorder from "./Component/Childborder/childborder";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Border>
+
+      <ChildBorder></ChildBorder>
+      <ChildBorder2></ChildBorder2>
+      <ChildBorder3></ChildBorder3>
+    
+     
+      </Border>
+      <Border></Border>
+
+    </>
   );
 }
 
