@@ -1,25 +1,37 @@
-import Layout from "./Component/layout"
-const items = 
-  {
-    "id": "600dc3b5c4e60ba2ebf06569",
-    "name": "Howell Faulkner",
-    "about": "Mollit Lorem reprehenderit qui elit id aliqua. Deserunt ipsum ad cupidatat ullamco ut aliqua est do consectetur nostrud sit esse.",
-    "address": "77 Hemlock Street, Hasty, Florida",
-    "company": "Fleetmix"
-    
+import Layout from "./Component/layout";
+import items from "./data/data.js";
+import React, { useState, useEffect } from "react";
+import './App.css'
+
+
+function App() {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  function toggleTheme() {
+    setTheme(theme === "light" ? "dark" : "light");
   }
 
-
-
-function App(){
   return (
     <>
+      {items.map((item) => (
+        <Layout
+          id={item.id}
+          name={item.name}
+          email={item.email}
+          gender={item.gender}
+          list={item.list}
+        />
+      ))}
 
-   <Layout  {...items} list = 'numbered' />
-   <Layout  {...items} list = 'alpha' />
-   <Layout  {...items} list = 'bullet' />
+      <div className={`App`}>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+      </div>
     </>
-  )
+  );
 }
 
-export default App 
+export default App;
