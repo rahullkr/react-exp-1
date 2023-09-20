@@ -1,20 +1,29 @@
-function Layout({ items }) {
+import React from "react";
+
+function Layout({ id, name, about, address, company, list }) {
+  let listElement;
+
+  if (list === "bullet") {
+    listElement = <ul>{renderItems()}</ul>;
+  } else if (list === "alpha") {
+    listElement = <ol type="a">{renderItems()}</ol>;
+  } else if (list === "numbered") {
+    listElement = <ol>{renderItems()}</ol>;
+  } 
+
+  function renderItems() {
     return (
       <>
-        <ul>
-          {items.map((item) => (
-            <li key={item.id}>
-              {Object.keys(item).map((key) => (
-                <div key={key}>
-                  <strong>{key}:</strong> {item[key]}
-                </div>
-              ))}
-            </li>
-          ))}
-        </ul>
+        <li>{id}</li>
+        <li>{name}</li>
+        <li>{about}</li>
+        <li>{address}</li>
+        <li>{company}</li>
       </>
     );
   }
-  
-  export default Layout;
-  
+
+  return listElement;
+}
+
+export default Layout;
